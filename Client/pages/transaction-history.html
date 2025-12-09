@@ -4,19 +4,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Product List</title>
+        <title>Transaction History</title>
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
         <!-- Material Icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Base and Product List CSS -->
+        <!-- Base and Transaction History CSS -->
         <link rel="stylesheet" href="../styles/base.css">
+        <link rel="stylesheet" href="../styles/transaction-history.css">
         <link rel="stylesheet" href="../styles/sidebar.css">
-        <link rel="stylesheet" href="../styles/product-list.css">
     </head>
 
     <body>
         <div class="main-container">
+
             <!-- Sidebar -->
             <nav class="sidebar">
                 <div class="logo-container">
@@ -39,13 +40,12 @@
                             Support</a></li>
                 </ul>
             </nav>
-
             <!-- Main Content -->
             <div class="content">
                 <!-- Header -->
                 <header class="header">
                     <div class="header-left">
-                        <h1>Product List</h1>
+                        <h1>Transaction History</h1>
                     </div>
                     <div class="header-right">
                         <a href="./notification.html" class="notification-link">
@@ -66,69 +66,60 @@
                     </div>
                 </header>
 
-                <!-- Search Bar -->
-                <div class="search-bar">
-                    <input type="text" placeholder="Search by Product Name or ID">
+                <!-- Search Section -->
+                <div class="search-section">
+                    <input type="text" placeholder="Search by Transaction ID or Customer Name" class="input-field">
                     <button class="button button-primary">Search</button>
                 </div>
 
-                <!-- Product Table -->
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Stock Quantity</th>
-                            <th>Category</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>101</td>
-                            <td><img src="https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa939c115075f231ec4be2_Brooke-Bond-Taaza-Danedar-Tea-200gm_1.webp"
-                                    alt="Product A" class="product-img"></td>
-                            <td>Brooke Bond Taaza Danedar Tea 200gm</td>
-                            <td>$2.00</td>
-                            <td>25</td>
-                            <td>Food</td>
-                            <td>
-                                <button class="button button-secondary">Edit</button>
-                                <button class="button button-secondary">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>102</td>
-                            <td><img src="https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/67483f0c2225bf11315a4e60_Dettol-Fresh-Odour-Protection-Soap-12525gm_1.webp"
-                                    alt="Product B" class="product-img"></td>
-                            <td>Dettol Fresh Odour Protection Soap 125(±)25gm</td>
-                            <td>$3.00</td>
-                            <td>10</td>
-                            <td>Cosmetics</td>
-                            <td>
-                                <button class="button button-secondary">Edit</button>
-                                <button class="button button-secondary">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>103</td>
-                            <td><img src="https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/668f7eb5636c9d7aa1e607f5_S203121-Noah-E-Blender-888-2024_1.webp"
-                                    alt="Product B" class="product-img"></td>
-                            <td>Noah Blender 888</td>
-                            <td>$20.00</td>
-                            <td>133</td>
-                            <td>Electronics</td>
-                            <td>
-                                <button class="button button-secondary">Edit</button>
-                                <button class="button button-secondary">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- Transaction Table -->
+                <div class="section">
+                    <!-- <h2>Transactions</h2> -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Total Items</th>
+                                <th>Date</th>
+                                <th>Customer</th>
+                                <th>Total Price</th>
+                                <th>Payment Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1234</td>
+                                <td>3</td>
+                                <td>2024-12-03</td>
+                                <td>10:15 AM</td>
+                                <td>Robin Khan</td>
+                                <td>$75</td>
+                                <td class="status paid"><span>Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td>#1235</td>
+                                <td>5</td>
+                                <td>2024-12-03</td>
+                                <td>1:45 PM</td>
+                                <td>Donald Trump</td>
+                                <td>$150</td>
+                                <td class="status pending"><span>Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#1236</td>
+                                <td>2</td>
+                                <td>2024-12-03</td>
+                                <td>3:30 PM</td>
+                                <td>Barak Obama</td>
+                                <td>$50</td>
+                                <td class="status canceled"><span>Canceled</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        <script src="../javascripts/transaction-history.js"></script>
     </body>
 
 </html>

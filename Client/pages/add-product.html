@@ -4,20 +4,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Transaction History</title>
+        <title>Add Product</title>
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
         <!-- Material Icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Base and Transaction History CSS -->
+        <!-- Base and Add Product CSS -->
         <link rel="stylesheet" href="../styles/base.css">
-        <link rel="stylesheet" href="../styles/transaction-history.css">
+        <link rel="stylesheet" href="../styles/add-product.css">
         <link rel="stylesheet" href="../styles/sidebar.css">
     </head>
 
     <body>
         <div class="main-container">
-
             <!-- Sidebar -->
             <nav class="sidebar">
                 <div class="logo-container">
@@ -40,12 +39,13 @@
                             Support</a></li>
                 </ul>
             </nav>
+
             <!-- Main Content -->
             <div class="content">
                 <!-- Header -->
                 <header class="header">
                     <div class="header-left">
-                        <h1>Transaction History</h1>
+                        <h1>Add Product</h1>
                     </div>
                     <div class="header-right">
                         <a href="./notification.html" class="notification-link">
@@ -66,60 +66,44 @@
                     </div>
                 </header>
 
-                <!-- Search Section -->
-                <div class="search-section">
-                    <input type="text" placeholder="Search by Transaction ID or Customer Name" class="input-field">
-                    <button class="button button-primary">Search</button>
-                </div>
+                <!-- Add Product Form -->
+                <form class="add-product-form">
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" placeholder="Enter product name" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price">Price</label>
+                        <input type="number" id="product-price" placeholder="Enter price" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-stock">Stock Quantity</label>
+                        <input type="number" id="product-stock" placeholder="Enter stock quantity" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-category">Category</label>
+                        <select id="product-category" class="input-field" required>
+                            <option value="">Select a category</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="groceries">Groceries</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="home-appliances">Home Appliances</option>
+                            <option value="books">Books</option>
+                            <option value="sports">Sports</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image"> Image URL</label>
+                        <input type="text" id="product-image" class="input-field" placeholder="Image url" required>
+                    </div>
+                    <button type="submit" class="button button-primary">Add Product</button>
+                </form>
 
-                <!-- Transaction Table -->
-                <div class="section">
-                    <!-- <h2>Transactions</h2> -->
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Transaction ID</th>
-                                <th>Total Items</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Customer</th>
-                                <th>Total Price</th>
-                                <th>Payment Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#1234</td>
-                                <td>3</td>
-                                <td>2024-12-03</td>
-                                <td>10:15 AM</td>
-                                <td>Robin Khan</td>
-                                <td>$75</td>
-                                <td class="status paid"><span>Paid</span></td>
-                            </tr>
-                            <tr>
-                                <td>#1235</td>
-                                <td>5</td>
-                                <td>2024-12-03</td>
-                                <td>1:45 PM</td>
-                                <td>Donald Trump</td>
-                                <td>$150</td>
-                                <td class="status pending"><span>Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>#1236</td>
-                                <td>2</td>
-                                <td>2024-12-03</td>
-                                <td>3:30 PM</td>
-                                <td>Barak Obama</td>
-                                <td>$50</td>
-                                <td class="status canceled"><span>Canceled</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
+
+        <script src="../javascripts/add-product.js"></script>
+
     </body>
 
 </html>
