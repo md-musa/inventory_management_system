@@ -2,10 +2,9 @@ const tableBody = document.querySelector("tbody");
 const searchInput = document.querySelector(".input-field");
 const searchBtn = document.querySelector(".button-primary");
 
-// Function to fetch transactions from backend
 async function loadTransactions(query = "") {
   try {
-    let url = "http://localhost:5000/transactions"; 
+    let url = "http://localhost:5000/transactions";
 
     if (query.trim() !== "") {
       url += `?search=${encodeURIComponent(query)}`;
@@ -16,7 +15,6 @@ async function loadTransactions(query = "") {
 
     const transactions = await res.json();
 
-    // Clear table
     tableBody.innerHTML = "";
 
     if (transactions.length === 0) {
@@ -24,11 +22,9 @@ async function loadTransactions(query = "") {
       return;
     }
 
-    // Populate table
     transactions.forEach((tx) => {
       const tr = document.createElement("tr");
 
-      // Payment status class
       let statusClass = "";
       if (tx.paymentStatus === "Paid") statusClass = "paid";
       else if (tx.paymentStatus === "Pending") statusClass = "pending";
@@ -51,20 +47,17 @@ async function loadTransactions(query = "") {
   }
 }
 
-// Load all transactions on page load
 loadTransactions();
 
-// Search button click
 searchBtn.addEventListener("click", () => {
   const query = searchInput.value.trim();
   loadTransactions(query);
 });
 
-// Optional: search on typing (debounced)
 let debounceTimeout;
 searchInput.addEventListener("input", () => {
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(() => {
     loadTransactions(searchInput.value.trim());
-  }, 500); // wait 500ms after typing stops
+  }, 500);
 });

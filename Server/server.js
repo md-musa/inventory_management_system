@@ -14,7 +14,6 @@ const MONGO_URI = "mongodb://localhost:27017/inventorydb";
 
 connectDB(MONGO_URI);
 
-// Routes
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
@@ -22,7 +21,6 @@ app.use((req, res, next) => {
 app.use("/products", productsRouter);
 app.use("/transactions", txRouter);
 
-// basic
 app.get("/", (req, res) => res.send("Inventory API is running"));
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));

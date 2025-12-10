@@ -2,14 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product");
 
-// GET all products
 router.get("/", async (req, res) => {
   try {
     const searchQuery = req.query.search || "";
 
     let filter = {};
     if (searchQuery.trim() !== "") {
-      // Filter products by name containing the search query (case-insensitive)
       filter = { name: { $regex: searchQuery, $options: "i" } };
     }
 
@@ -20,7 +18,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET single product
 router.get("/:id", async (req, res) => {
   try {
     const p = await Product.findById(req.params.id);
@@ -31,7 +28,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// CREATE product
 router.post("/", async (req, res) => {
   try {
     console.log(req.body);
@@ -44,7 +40,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// UPDATE
 router.put("/:id", async (req, res) => {
   try {
     const updated = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -54,7 +49,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// DELETE
 router.delete("/:id", async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);

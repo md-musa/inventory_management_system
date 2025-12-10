@@ -3,7 +3,6 @@ const router = express.Router();
 const Transaction = require("../models/Transaction");
 const shortid = require("shortid");
 
-// GET all transactions
 router.get("/", async (req, res) => {
   try {
     const tx = await Transaction.find().sort({ date: -1 });
@@ -13,7 +12,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// CREATE transaction
 router.post("/", async (req, res) => {
   try {
     const { items, totalItems, totalPrice, customer, paymentStatus } = req.body;
@@ -33,7 +31,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// get one
 router.get("/:id", async (req, res) => {
   try {
     const t = await Transaction.findById(req.params.id);

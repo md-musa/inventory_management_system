@@ -7,27 +7,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let cart = [];
 
-  // Create a loading spinner element
   const loadingEl = document.createElement("span");
   loadingEl.classList.add("loading-spinner");
   loadingEl.style.display = "none";
-  loadingEl.textContent = "Loading..."; // Simple text spinner
+  loadingEl.textContent = "Loading...";
   addBtn.parentElement.appendChild(loadingEl);
 
-  // Search product by ID
   addBtn.addEventListener("click", async () => {
     const productId = searchInput.value.trim();
     if (!productId) return alert("Enter Product ID");
 
     try {
-      // Show loading
       loadingEl.style.display = "inline-block";
       addBtn.disabled = true;
 
       const res = await fetch(`http://localhost:5000/products/${productId}`);
       const product = await res.json();
 
-      // Hide loading
       loadingEl.style.display = "none";
       addBtn.disabled = false;
 
@@ -42,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Add product to cart and table
   function addToTable(product) {
     const exists = cart.find((p) => p.productId === product._id);
     if (exists) return alert("Product already added!");
@@ -58,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable();
   }
 
-  // Re-render the table
   function renderTable() {
     tableBody.innerHTML = "";
 
@@ -83,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateTotals();
   }
 
-  // Update totals
   function updateTotals() {
     let totalItems = 0;
     let totalPrice = 0;
@@ -97,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     totalPriceEl.innerHTML = totalPrice;
   }
 
-  // Handle qty update & remove
   tableBody.addEventListener("input", (e) => {
     if (e.target.classList.contains("qty-input")) {
       const index = e.target.dataset.index;
@@ -114,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Complete Purchase
   const completeBtn = document.querySelector(".customer-info .button-primary");
 
   completeBtn.addEventListener("click", async () => {

@@ -1,19 +1,16 @@
 async function loadDashboard() {
   try {
-    // Fetch all transactions
     const transRes = await fetch("http://localhost:5000/transactions");
     const transactions = await transRes.json();
 
-    // Fetch all products
     const prodRes = await fetch("http://localhost:5000/products");
     const products = await prodRes.json();
 
-    // Get today's date
     const today = new Date();
     const todayStr = today.toISOString().split("T")[0]; // YYYY-MM-DD
-    const currentMonth = today.getMonth(); // 0-11
+    const currentMonth = today.getMonth();
 
-    // --- Calculate Sales ---
+    // --------- Calculate Sales ---------
     let totalToday = 0,
       totalMonth = 0,
       totalAllTime = 0;
@@ -31,7 +28,7 @@ async function loadDashboard() {
     document.getElementById("sales-month").innerText = `$${totalMonth}`;
     document.getElementById("sales-alltime").innerText = `$${totalAllTime}`;
 
-    // --- Recent Transactions ---
+    // -------- Recent Transactions ------------
     const tbody = document.getElementById("recent-transactions");
     tbody.innerHTML = "";
     transactions
@@ -52,7 +49,7 @@ async function loadDashboard() {
         tbody.appendChild(tr);
       });
 
-    // --- Low Stock Products ---
+    // ---------- Low Stock Products --------
     const stockContainer = document.getElementById("low-stock-cards");
     stockContainer.innerHTML = "";
     products

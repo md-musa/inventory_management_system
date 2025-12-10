@@ -1,12 +1,9 @@
-// scripts/add-product.js
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".add-product-form");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    // Get form values
     const name = document.getElementById("product-name").value.trim();
     const price = document.getElementById("product-price").value;
     const stock = document.getElementById("product-stock").value;
@@ -18,20 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // JSON body to send
     const productData = {
       name,
       price: Number(price),
       stock: Number(stock),
       category,
-      imageLink: imageURL, // <-- plain string URL
+      imageLink: imageURL, 
     };
 
     try {
       const response = await fetch("http://localhost:5000/products", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json", // <-- required
+          "Content-Type": "application/json", 
         },
         body: JSON.stringify(productData),
       });

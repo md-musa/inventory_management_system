@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.querySelector("tbody");
   const searchInput = document.querySelector(".search-bar input");
-  const searchBtn = document.querySelector(".search-bar button");
 
-  // Fetch and display all products
   async function loadProducts(query = "") {
     try {
       let url = "http://localhost:5000/products";
@@ -41,17 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Search button functionality
   searchInput.addEventListener("input", () => {
     const query = searchInput.value.trim();
     loadProducts(query);
   });
 
-  // Load all products on page load
   loadProducts();
 });
 
-// Delete button function
 async function deleteProduct(id) {
   const confirmDelete = confirm("Are you sure you want to delete this product?");
   if (!confirmDelete) return;
